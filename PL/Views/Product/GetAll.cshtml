@@ -1,0 +1,40 @@
+﻿@Model ML.Product
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/Stilos.css" rel="stylesheet" />
+<h2>GetAll</h2>
+<div class="container">
+    <div class="contenerdor mx-auto">
+        <a class="btn btn-outline-secondary" href="@Html.Action("Formulario", "Product", new {IdProduct = 0})">
+            Add
+        </a>
+        <div class="table-responsive">
+            <table class="table-bordered">
+                <thead>
+                    <tr>
+                        <th style="text-align: center;">Actions</th>
+                        <th style="text-align: center;">Name</th>
+                        <th style="text-align: center;">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (ML.Product product in Model.Products)
+                    {
+                        <tr>
+                            <th style="text-align: center;">
+                                <a class="btn btn-outline-secondary" href="@Html.Action("Formulario", "Product", new {IdProduct = 0})">
+                                    Edit
+                                </a>
+                            </th>
+                            <th style="text-align: center;">@product.Name</th>
+                            <th style="text-align: center;">@product.Price</th>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

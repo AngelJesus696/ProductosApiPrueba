@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<link href="~/Content/Login.css" rel="stylesheet" />
+<div class="container">
+
+    <div class="contenerdorLogin mx-auto">
+        <label class="text-center col-12 mb-4">
+            
+            Ingresa tu usuario y 
+            contraseña
+        </label>
+        <div>
+            @Html.TextBox("username", "", new { @class = "form-control", placeholder = "Username" })
+        </div>
+        <div class="mt-4">
+            @Html.TextBox("pass", "", new { @class = "form-control", placeholder = "Password" })
+        </div>
+
+        <a class="btn btn-primary mt-4" href="@Url.Action("GetAll", "Product")">
+            Ingresar
+        </a>
+    </div>
+</div>
