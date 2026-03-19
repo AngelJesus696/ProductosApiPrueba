@@ -207,6 +207,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\EstiloForm.css" />
     <Content Include="Content\Login.css" />
     <Content Include="Content\Stilos.css" />
     <Content Include="favicon.ico" />

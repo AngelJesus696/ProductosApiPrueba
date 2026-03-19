@@ -1,13 +1,56 @@
-﻿
+﻿@model ML.Product
 @{
     ViewBag.Title = "Fromulario";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link href="~/Content/EstiloForm.css" rel="stylesheet" />
+<h2>Formulario</h2>
+@using (Html.BeginForm("Fromulario", "Product", FormMethod.Post))
+{
+    <div class="container">
+        <div class="contenerdorForm mx-auto">
+            <div class="row">
+                @if (Model.IdProduct > 0)
+                {
+                    <label class="text-center col-12 mb-2">Actualiza un producto</label>
+                }
+                else
+                {
+                    <label class="text-center col-12 mb-2">Agrega un nuevo producto</label>
+                }
+                @Html.HiddenFor(model => model.IdProduct)
+                <div class="col-6">
+                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "Name" })
+                </div>
+                <div class="col-6">
+                    @Html.TextBoxFor(model => model.Price, new { @class = "form-control", placeholder = "Price" })
+                </div>
+            </div>
+        </div>
+        <div class="contenerdorbtn mx-auto">
+            <div class="row">
+                <div class="col-6">
+                    @if (Model.IdProduct > 0)
+                    {
+                        <button type="submit" class="btn btn-outline-success">
+                            Update
+                        </button>
+                    }
+                    else
+                    {
+                        <button type="submit" class="btn btn-outline-success">
+                            Agregar
+                        </button>
+                    }
 
-<h2>Fromulario</h2>
+                </div>
+                <div class="col-6">
+                    <a class="btn btn-outline-warning" href="@Url.Action("GetAll","Product")">
+                        Regresar
+                    </a>
+                </div>
+            </div>
 
-<div class="container">
-    <div class="contenerdorForm">
-        
+        </div>
     </div>
-</div>
+}

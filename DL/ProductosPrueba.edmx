@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ProductosPruebaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ProductosPruebaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="IdProduct" />
@@ -32,8 +32,7 @@
         <EntityContainer Name="ProductosPruebaModelStoreContainer">
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ProductosPruebaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -52,23 +51,25 @@
             <Parameter Name="Price" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="ProductDelete">
-            <Parameter Name="IdProduct" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="ProductGetAll" ReturnType="Collection(ProductosPruebaModel.ProductGetAll_Result)" />
-          <FunctionImport Name="ProductGetById" ReturnType="Collection(ProductosPruebaModel.ProductGetById_Result)">
-            <Parameter Name="IdProduct" Mode="In" Type="Int32" />
+          <Parameter Name="IdProduct" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="ProductUpdate">
             <Parameter Name="Name" Mode="In" Type="String" />
             <Parameter Name="Price" Mode="In" Type="Int32" />
             <Parameter Name="IdProduct" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="ProductGetAll" ReturnType="Collection(ProductosPruebaModel.ProductGetAll_Result)" />
+          <FunctionImport Name="ProductGetById" ReturnType="Collection(ProductosPruebaModel.ProductGetById_Result)">
+            <Parameter Name="IdProduct" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="ProductGetAll_Result">
+          <Property Type="Int32" Name="IdProduct" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="Price" Nullable="false" />
         </ComplexType>
         <ComplexType Name="ProductGetById_Result">
+          <Property Type="Int32" Name="IdProduct" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="Price" Nullable="false" />
         </ComplexType>
@@ -89,9 +90,11 @@
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="ProductAdd" FunctionName="ProductosPruebaModel.Store.ProductAdd" />
           <FunctionImportMapping FunctionImportName="ProductDelete" FunctionName="ProductosPruebaModel.Store.ProductDelete" />
+          <FunctionImportMapping FunctionImportName="ProductUpdate" FunctionName="ProductosPruebaModel.Store.ProductUpdate" />
           <FunctionImportMapping FunctionImportName="ProductGetAll" FunctionName="ProductosPruebaModel.Store.ProductGetAll">
             <ResultMapping>
               <ComplexTypeMapping TypeName="ProductosPruebaModel.ProductGetAll_Result">
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
               </ComplexTypeMapping>
@@ -100,12 +103,12 @@
           <FunctionImportMapping FunctionImportName="ProductGetById" FunctionName="ProductosPruebaModel.Store.ProductGetById">
             <ResultMapping>
               <ComplexTypeMapping TypeName="ProductosPruebaModel.ProductGetById_Result">
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="ProductUpdate" FunctionName="ProductosPruebaModel.Store.ProductUpdate" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

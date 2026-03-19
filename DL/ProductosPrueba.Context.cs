@@ -51,20 +51,6 @@ namespace DL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ProductDelete", idProductParameter);
         }
     
-        public virtual ObjectResult<ProductGetAll_Result> ProductGetAll()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProductGetAll_Result>("ProductGetAll");
-        }
-    
-        public virtual ObjectResult<ProductGetById_Result> ProductGetById(Nullable<int> idProduct)
-        {
-            var idProductParameter = idProduct.HasValue ?
-                new ObjectParameter("IdProduct", idProduct) :
-                new ObjectParameter("IdProduct", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProductGetById_Result>("ProductGetById", idProductParameter);
-        }
-    
         public virtual int ProductUpdate(string name, Nullable<int> price, Nullable<int> idProduct)
         {
             var nameParameter = name != null ?
@@ -80,6 +66,20 @@ namespace DL
                 new ObjectParameter("IdProduct", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ProductUpdate", nameParameter, priceParameter, idProductParameter);
+        }
+    
+        public virtual ObjectResult<ProductGetAll_Result> ProductGetAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProductGetAll_Result>("ProductGetAll");
+        }
+    
+        public virtual ObjectResult<ProductGetById_Result> ProductGetById(Nullable<int> idProduct)
+        {
+            var idProductParameter = idProduct.HasValue ?
+                new ObjectParameter("IdProduct", idProduct) :
+                new ObjectParameter("IdProduct", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProductGetById_Result>("ProductGetById", idProductParameter);
         }
     }
 }

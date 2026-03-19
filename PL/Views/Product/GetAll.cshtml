@@ -1,4 +1,4 @@
-﻿@Model ML.Product
+﻿@model ML.Product
 @{
     ViewBag.Title = "GetAll";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,9 +7,11 @@
 <h2>GetAll</h2>
 <div class="container">
     <div class="contenerdor mx-auto">
-        <a class="btn btn-outline-secondary" href="@Html.Action("Formulario", "Product", new {IdProduct = 0})">
-            Add
-        </a>
+        <div class="col-4 w-100">
+            <a href="@Url.Action("Fromulario", "Product", new {IdProduct = 0})" class="btn btn-outline-secondary">
+                Add
+            </a>
+        </div>
         <div class="table-responsive">
             <table class="table-bordered">
                 <thead>
@@ -24,8 +26,11 @@
                     {
                         <tr>
                             <th style="text-align: center;">
-                                <a class="btn btn-outline-secondary" href="@Html.Action("Formulario", "Product", new {IdProduct = 0})">
+                                <a class="btn btn-outline-secondary" href="@Url.Action("Fromulario", "Product", new {IdProduct = product.IdProduct})">
                                     Edit
+                                </a>
+                                <a class="btn btn-outline-secondary" href="@Url.Action("Delete", "Product", new {IdProduct = product.IdProduct})">
+                                    Delete
                                 </a>
                             </th>
                             <th style="text-align: center;">@product.Name</th>

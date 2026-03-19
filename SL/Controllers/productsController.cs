@@ -54,7 +54,7 @@ namespace SL.Controllers
             ML.Result result = BL.Product.GetById(IdProduct);
             if (result.Correct)
             {
-                return Ok(result.Object);
+                return Ok(result);
             }
             else
             {

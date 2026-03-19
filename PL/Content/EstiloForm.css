@@ -1,0 +1,16 @@
+﻿body {
+    background-color: lavender;
+}
+.contenerdorForm {
+    width: 700px;
+    height: 100%;
+    background-color: lightsteelblue;
+    border-radius: 30px;
+    padding: 15px;
+}
+.contenerdorbtn {
+    width: 250px;
+    height: 100%;
+    border-radius: 30px;
+    padding: 15px;
+}

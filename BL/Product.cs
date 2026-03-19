@@ -23,6 +23,7 @@ namespace BL
                         {
                             ML.Product product = new ML.Product();
 
+                            product.IdProduct = productDB.IdProduct;
                             product.Name = productDB.Name;
                             product.Price = productDB.Price;
 
@@ -57,6 +58,7 @@ namespace BL
                     {
                             ML.Product product = new ML.Product();
 
+                            product.IdProduct = Product.IdProduct;
                             product.Name = Product.Name;
                             product.Price = Product.Price;
 

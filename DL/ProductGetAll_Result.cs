@@ -13,6 +13,7 @@ namespace DL
     
     public partial class ProductGetAll_Result
     {
+        public int IdProduct { get; set; }
         public string Name { get; set; }
         public int Price { get; set; }
     }
